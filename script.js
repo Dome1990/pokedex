@@ -1,30 +1,11 @@
 let currentPokemon;
 
 /**
- * https://www.pokemon.com/de/pokedex/ a pokedex
- * https://pokeapi.co/ the api website
- * https://pokeapi.co/api/v2/gender/{id or name} for the gender
+ * render the pokemon cards
  */
-
 async function loadPokemon() {
-    // let speciesUrl = `https://pokeapi.co/api/v2/pokemon-species/2/`;
-    // let resp = await fetch(speciesUrl);
-    // let species = await resp.json();
-    // console.log(species);
-
-    // for (let i = 1; i < 1; i++){ // iterate thru the pokemon id´s
-    // let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
-    // let response = await fetch(url);
-    // currentPokemon = await response.json();
-    // console.log(currentPokemon); //the json of the pokemone
-    // console.log('name of pokemon ' + currentPokemon['name']); //name of the pokemon in english
-    // console.log('id of pokemon ' + currentPokemon['id']); //the right id in the pokedex
-    // console.log('artstyle ' + currentPokemon['sprites']['other']['official-artwork']['front_default']); //nice art style
-    // for (let j = 0; j < currentPokemon['types'].length; j++){
-    // console.log('type ' + currentPokemon['types'][j]['type']['name']);
-
     document.getElementById('pokedex').innerHTML = '';
-    for (i = 1; i < 50; i++) {
+    for (i = 1; i < 100; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
         let response = await fetch(url);
         currentPokemon = await response.json();
@@ -47,11 +28,20 @@ async function loadPokemon() {
         }
     }
 }
-
+/**
+ * 
+ * @param {*} string 
+ * @returns string with first letter upper case
+ */
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
+/**
+ * @param {*} id of the pokemon the user clicked on
+ * will show a big card of the pokemon the user clicked on
+ * with details like:
+ * height, weight and the base stats
+ */
 async function showDetails(id) {
     let url = `https://pokeapi.co/api/v2/pokemon/${id}`;
     let response = await fetch(url);
@@ -69,7 +59,9 @@ async function showDetails(id) {
             <div>height ${(currentPokemon['height'])/10} m</div>
             <div>weight ${(currentPokemon['weight'])/10} kg</div>
         </div>
-        <div>stats</div>
+        <div class="statsParent">
+        <table id="stats"></table>
+        </div>
     </div>
     `;
     document.getElementById('typesInfoCard').innerHTML = '';
@@ -79,8 +71,26 @@ async function showDetails(id) {
             <div class="typ ${typ}">${typ}</div>
             `;
     }
+    
+    
+    let statsDiv = document.getElementById('stats');
+    statsDiv.innerHTML = '';
+    for (k = 0; k < currentPokemon["stats"].length; k++){
+        let statName = currentPokemon["stats"][k]["stat"]["name"];
+        let statValue = currentPokemon["stats"][k]["base_stat"];
+        statsDiv.innerHTML +=`
+        <tr>
+        <td style="width: 36%">
+        ${statName}
+        </td>
+        <td><div class="statusbar" style="width:${statValue}%">${statValue}</div></td>
+        </tr>
+        `;
+    }
 }
-
+/**
+ * will hide the detailed pokemon info card
+ */
 function hideDetails() {
     document.body.style = '';
     document.getElementById('bigPokemonBackground').classList.add('d-none');
