@@ -3,6 +3,11 @@ body {
     background-color: wheat;
     overflow-x: hidden;
     font-family: 'Roboto', sans-serif;
+    
+}
+
+html{
+    scroll-behavior: smooth;
 }
 
 header {
@@ -11,6 +16,31 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+}
+
+.button {
+    background-color: blueviolet;
+    color: white;
+    border: unset;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 8px;
+    font-size: 1rem;
+    text-decoration: none;
+    margin: 0 8px 0 8px;
+    font-family: 'Roboto', sans-serif;
+    transition: all 255ms ease-in-out;
+}
+
+.button:hover {
+    transform: scale(1.05);
 }
 
 input:focus {
@@ -89,7 +119,7 @@ input:focus {
     cursor: pointer;
 }
 
-#bigPokemonCard{
+#bigPokemonCard {
     height: 95vh;
     width: 336px;
     display: flex;
@@ -100,7 +130,7 @@ input:focus {
     border-width: 1px;
 }
 
-.pokemonImgBig{
+.pokemonImgBig {
     width: 100%;
     height: 45%;
     object-fit: contain;
@@ -144,8 +174,13 @@ input:focus {
 }
 
 @keyframes statusScale {
-    0%{width: 0;}
-    40%{width: 80%;}
+    0% {
+        width: 0;
+    }
+
+    40% {
+        width: 80%;
+    }
 }
 
 .types {
@@ -153,6 +188,7 @@ input:focus {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .typ {
@@ -163,7 +199,7 @@ input:focus {
     padding: 4px;
 }
 
-.spaceEven{
+.spaceEven {
     width: 100%;
     display: flex;
     align-items: center;
@@ -227,7 +263,7 @@ input:focus {
 }
 
 .ghost {
- background-color: #6666BC;   
+    background-color: #6666BC;
 }
 
 .dragon {

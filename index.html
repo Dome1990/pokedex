@@ -16,12 +16,13 @@
 </head>
 
 <body onload="loadPokemon()">
-    <header><input type="text" placeholder="search"></header>
+    <header><input id="search" type="text" placeholder="search" onkeydown="search()"></header>
     <div id="pokedex"></div>
     <div id="bigPokemonBackground" class="d-none" onclick="hideDetails()">
         <div id="bigPokemonCard">
         </div>
     </div>
+    <footer><button class="button" onclick="loadPokemon()">Show More</button> <a href="#search" class="button">Back To Top</a></footer>
 </body>
 
 </html>
