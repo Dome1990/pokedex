@@ -83,7 +83,7 @@ async function showDetails(id) {
         <td style="width: 36%">
         ${statName}
         </td>
-        <td><div class="statusbar" style="width:${statValue}%">${statValue}</div></td>
+        <td><div class="statusbar" style="width:calc(${statValue}%*0.5)">${statValue}</div></td>
         </tr>
         `;
     }

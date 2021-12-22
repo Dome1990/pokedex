@@ -140,6 +140,12 @@ input:focus {
     border-radius: 3px;
     text-align: center;
     color: white;
+    animation: statusScale 2s ease-in-out;
+}
+
+@keyframes statusScale {
+    0%{width: 0;}
+    40%{width: 80%;}
 }
 
 .types {
