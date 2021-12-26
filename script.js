@@ -57,11 +57,11 @@ async function showDetails(id) {
     document.getElementById('bigPokemonCard').innerHTML += `
     <img class="pokemonImgBig ${imgBg}" src="${currentPokemon['sprites']['other']['official-artwork']['front_default']}">
     <div class="info">
-        <div><h1>${capitalizeFirstLetter(currentPokemon['name'])}</h1></div>
+        <div class="name"><h1>${capitalizeFirstLetter(currentPokemon['name'])}</h1></div>
         <div class="types" id="typesInfoCard"></div>
         <div class="spaceEven">
-            <div>height ${(currentPokemon['height']) / 10} m</div>
-            <div>weight ${(currentPokemon['weight']) / 10} kg</div>
+            <div class="heightWeight"><h4>Height ${(currentPokemon['height']) / 10} m</h4></div>
+            <div class="heightWeight"><h4>Weight ${(currentPokemon['weight']) / 10} kg</h4></div>
         </div>
         <div class="statsParent">
         <table id="stats"></table>
